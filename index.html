@@ -1,14 +1,1168 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jacketjack113.github.io</title>
-  </head>
-  <body>
-    <main>
-      <h1>jacketjack113.github.io</h1>
-      <p>This is the site homepage.</p>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>
+        N0tHumqn
+    </title>
+    <style>
+        /* Main configuration of the webpage */
+        body {
+            min-height: 100vh;
+            margin: 0rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stop-scrolling {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Top banner configuration */
+        .profile {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rectangle-svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .profile-name {
+            width: 100%;
+            margin: 0rem 1rem;
+            color: #eeeeee;
+            text-align: left;
+            background-color: #4f4f4f;
+            font-weight: bold;
+            border-radius: 8px;
+            width: auto;
+            padding: 5px 5px 5px 5px;
+            font-size: 18px;
+        }
+
+        /* Tab menu configuration */
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.8rem;
+            margin: 0.5rem 1rem;
+            flex: 1;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+
+            min-width: 0;
+            max-width: 100%;
+        }
+        
+
+        [role="tablist"] {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+
+        @media (max-width: 600px) {
+            [role="tab"],
+            .nav-dropdown {
+                flex: 1 1 calc(50% - 0.25rem);
+            }
+
+            .nav-dropdown > [role="tab"] {
+                width: 100%;
+            }
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            z-index: 1;
+            display: none;
+            min-width: 11rem;
+            padding: 0.25rem;
+            border: 1px solid #4f4f4f;
+            border-radius: 0 5px 5px 5px;
+            background-color: #292929;
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dropdown-menu button {
+            padding: 0.5rem 0.1rem;
+            border: 0;
+            background: transparent;
+            color: #eeeeee;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .dropdown-menu button:hover,
+        .dropdown-menu button:focus-visible {
+            background-color: #4f4f4f;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown>button::after {
+            content: ">";
+            float: right;
+            margin-left: 1rem;
+        }
+
+        .nested-menu {
+            position: absolute;
+            top: -0.25rem;
+            left: 100%;
+            display: none;
+            min-width: 8rem;
+            padding: 0.25rem;
+            border: 1px solid #4f4f4f;
+            background-color: #292929;
+        }
+
+        .nested-dropdown:hover .nested-menu,
+        .nested-dropdown:focus-within .nested-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        [role="tab"] {
+            padding: 0.25rem 1rem;
+            border: 0;
+            background: #292929;
+            cursor: pointer;
+            font-size: 1rem;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #4f4f4f;
+            color: #eeeeee;
+
+            flex: 0 1 auto;
+            white-space: normal;
+        }
+
+
+        [role="tab"][aria-selected="true"] {
+            background: #4f4f4f;
+            color: #eeeeee;
+        }
+
+        [role="tabpanel"] {
+            flex: 1;
+            padding: 0rem 1rem;
+            border: 1px solid #4f4f4f;
+            background-color: #4f4f4f
+        }
+
+        [hidden] {
+            display: none;
+        }
+
+        /* collapse content configuration */
+        .collapsible {
+            cursor: pointer;
+            padding: 5px;
+            width: 100%;
+            border: 1px solid #eeeeee;
+            text-align: left;
+            outline: 8px;
+            font-size: 15px;
+            background-color: #4f4f4f;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin-bottom: 0rem;
+            color: #eeeeee;
+        }
+
+        .active,
+        .collapsible:hover {
+            background-color: #7a7a7a;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #7a7a7a;
+            border: 1px solid #eeeeee;
+            margin-bottom: 1rem;
+        }
+
+        .content>img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        /* profile link button */
+        .profile-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 5px;
+
+            font-weight: bold;
+
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+
+            margin-bottom: 1rem;
+        }
+
+        .profile-button img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+        }
+
+        .profile-button img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+
+        .profile-button--osu {
+            background-color: #e86b9a;
+        }
+
+        .profile-button--osu:hover {
+            background-color: #d95485;
+        }
+
+        .profile-button--minecraft {
+            background-color: #a3e670;
+            color: #000000;
+        }
+
+        .profile-button--minecraft:hover {
+            background-color: #8ac25f;
+        }
+
+        .profile-button--hpk-discord {
+            background-color: #8ba6f0;
+        }
+
+        .profile-button--hpk-discord:hover {
+            background-color: #738ac7;
+        }
+
+        .profile-button--instagram {
+            background-color: #f29cff;
+        }
+
+        .profile-button--instagram:hover {
+            background-color: #dc8ee8;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding: 1rem 0;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            border: 1px solid #5ec9ff;
+            border-radius: 5px;
+            background-color: #292929;
+            color: #eeeeee;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background-color: #5ec9ff;
+            color: #292929;
+        }
+
+        .download-button-is-disabled {
+            display: inline-block;
+            padding: 0.6rem 1rem;
+            background-color: #3a3a3a;
+            border-color: #555555;
+            border: 1px solid #eeeeee;
+            border-radius: 5px;
+            color: #eeeeee;
+            text-align: center;
+            cursor: not-allowed;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 40rem;
+        }
+
+        .contact-form label {
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #eeeeee;
+            border-radius: 5px;
+            background-color: #292929;
+            color: #eeeeee;
+            font: inherit;
+        }
+
+        .contact-form textarea {
+            min-height: 10rem;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            align-self: flex-start;
+            padding: 0.6rem 1rem;
+            border: 1px solid #5ec9ff;
+            border-radius: 5px;
+            background-color: #292929;
+            color: #eeeeee;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .contact-form button:hover,
+        .contact-form button:focus-visible {
+            background-color: #5ec9ff;
+            color: #292929;
+        }
+
+        .contact-form button:disabled {
+            cursor: wait;
+            opacity: 0.6;
+        }
+
+        .form-status {
+            min-height: 1.5em;
+        }
+
+        .form-status--error {
+            color: #ff9b9b;
+        }
+
+        .form-status--success {
+            color: #a3e670;
+        }
+    </style>
+</head>
+
+<body style="background-color:#292929; color:#eeeeee; font-family: Courier New, Courier, monospace;">
+    <header class="profile">
+        <svg class="rectangle-svg" viewBox="0 0 100 18" preserveAspectRatio="none" role="img"
+            aria-label="Profile banner">
+            <!-- Light Blue Banner -->
+            <polygon points="0,0 100,0 100,10 0,10" fill="#5ec9ff" />
+            <!-- Profile Picture Background Circle -->
+            <circle cx="10" cy="10" r="7" fill="#292929" />
+            <!-- Profile Picture -->
+            <defs>
+                <clipPath id="circleCrop">
+                    <circle cx="10" cy="10" r="6" />
+                </clipPath>
+            </defs>
+
+            <image href="static/pfp.png" x="4" y="4" width="12" height="12" preserveAspectRatio="xMidYMid slice"
+                clip-path="url(#circleCrop)" style="image-rendering: pixelated" />
+        </svg>
+
+        <p class="profile-name">Wing Yin POON (a.k.a. N0tHumqn)</p>
+    </header>
+
+    <main class="tabs">
+        <!-- tab declaration about resources achievement contact -->
+        <div role="tablist" aria-label="Example tabs">
+            <button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0">
+                About
+            </button>
+
+            <button id="tab-hkust" role="tab" aria-selected="false" aria-controls="panel-hkust" tabindex="-1">
+                HKUST Resources
+            </button>
+
+            <div class="nav-dropdown">
+                <button id="tab-mcpk" role="tab" aria-selected="false" aria-controls="panel-mcpk" tabindex="-1">
+                    MCPK Achievement
+                </button>
+
+                <div class="dropdown-menu" aria-label="MCPK achievement sections">
+                    <button type="button" data-achievement-section="achievement-overview">
+                        Overview
+                    </button>
+
+                    <div class="nested-dropdown">
+                        <button type="button">OneJump Achievement</button>
+                        <div class="nested-menu" aria-label="achievement-oj">
+                            <button type="button" data-achievement-section="D8">
+                                Difficulty 8
+                            </button>
+                            <button type="button" data-achievement-section="D9">
+                                Difficulty 9
+                            </button>
+                            <button type="button" data-achievement-section="D10">
+                                Difficulty 10
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="button" data-achievement-section="achievement-nonoj">
+                        Non-OneJump Achievement
+                    </button>
+                </div>
+            </div>
+
+            <button id="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact" tabindex="-1">
+                Contact
+            </button>
+        </div>
+
+        <!-- actual content -->
+        <section id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+            <p> > The Charizard that is suffering from the wra(i)th of Electronic Engineering in HKUST. </p>
+            <p> > Meanwhile working as an intern in China Mobile HK. </p>
+            <p> > Create original character doodles sometimes. </p>
+            <p> > While I messes around in both academic and workplace, personally I play osu! and Minecraft Technical
+                Parkour a lot.</p>
+            <p> > Besides from the gaming aspect, I ride with bike and cruises around a lot in real life as well, for
+                capturing different photos.</p>
+
+            <button type="button" class="collapsible">&#128315 Domain: osu!</button>
+            <div class="content">
+                <p>Even though I don't play osu! as often as Minecraft Technical Parkour, in most case, I play osu! just
+                    for fun, enjoying
+                    different songs while tryharding myself by tapping at the right beat.
+                </p>
+                <p>
+                    Throughout the years, I had sharpen my aiming skills slowly. Though, I will still need to work on my
+                    tapping
+                    especially long streams, because my consistency drops as time varies.
+                </p>
+                <a href="https://osu.ppy.sh/users/31185611" class="profile-button profile-button--osu">
+                    <img src="static/osu_pfp.png" width="40" height="40" alt="osu! profile picture" />
+                    <span>My osu! profile</span>
+                </a>
+            </div>
+            <p></p>
+            <button type="button" class="collapsible">&#128315 Domain: Technical Parkour</button>
+            <div class="content">
+                <p>Technically I started playing Technical Parkour a bit after I started my osu! journey. However, it
+                    also shocked
+                    me for how much progress I learnt through out the journey, how many people I had connected through
+                    Hypixel Housing,
+                    HPK Network etc.
+                </p>
+                <p>
+                    When I started pivoting from Bedwar, to Skyblock, to Duel and finally, Technical Parkour, I
+                    basically have nothing, not even
+                    the slight glimpse of how timing/gametick works. I started out as a toddler in parkour, and I still
+                    remember when I sturggle so much on how to
+                    do Triple Neo, then my first Backward Momentum (BWMM) jump, 45 strafes; various techniques and you
+                    name it, all learnt from different clips,
+                    helps from my dearest friends, my sheer determination and patience.
+                </p>
+                <p>
+                    Till today, I still try to assist different players in different map (mostly in Hypixel but still),
+                    teaching them techniques to overcome
+                    different jumps, and share the joy when they finally beat their guantlet at their current stages.
+                </p>
+                <div class="profile-buttons">
+                    <a href="https://en.namemc.com/profile/N0tHumqn.1" class="profile-button profile-button--minecraft">
+                        <img src="static/pfp.png" alt="Minecraft profile picture">
+                        <span>My NameMC Profile</span>
+                    </a>
+                </div>
+            </div>
+            <p></p>
+            <button type="button" class="collapsible">&#128315 Domain: Cruising with Bike</button>
+            <div class="content">
+                <p>
+                    Surely I will need extra way to discharge my energy besides from just playing computer games, so now
+                    here it is.
+                </p>
+                <p>
+                    Normally when I rent a bike, specifically locobike, I cruise around the praya with decent speed (to
+                    feel the wind for sure).
+                    Ironically, accident happens, ranging from crashing or bike-part fail (when renting proper bikes),
+                    and from the years with the bike, I know how to
+                    deal with gear problems to get my hand dirty.
+                </p>
+                <p>
+                    I'm still a layman in photography, but sometimes the photos from the trip can be quite incredible
+                    that I would love to capture them down,
+                    here are some of them I had taken from late September, 2026 in Tai Po, I still found those
+                    photos extraodinary and special based on my internal ruler.
+                </p>
+                <button type="button" class="collapsible">&#128315 Image 1</button>
+                <div class="content">
+                    <img src="static/about-captures/20260926_183047.jpg" width="500" height="231">
+                </div>
+                <p></p>
+
+                <button type="button" class="collapsible">&#128315 Image 2</button>
+                <div class="content">
+                    <img src="static/about-captures/20260926_183256.jpg" width="500" height="231">
+                </div>
+                <p></p>
+
+                <button type="button" class="collapsible">&#128315 Image 3</button>
+                <div class="content">
+                    <img src="static/about-captures/20260926_183525.jpg" width="500" height="231">
+                </div>
+                <p> </p>
+            </div>
+            <p></p>
+            <button type="button" class="collapsible">&#128315 Domain: Drawing some stuffs</button>
+            <div class="content">
+                <p>
+                    Personally I own a convertible laptop, most of the time I flip the notebook into a tablet mode
+                    then start drawing something inside, either for formal and informal stuff. Most notable being my
+                    fursona that is still work in progress.
+                </p>
+                <p>
+                    In addition to that, besides from using FireAlpaca as my primary drawing program for raster image,
+                    I also use OneNote to draw either formal and informal stuff for vector-based image.
+                </p>
+                <p>
+                    Surely, my drawing skill isn't very good at this moment, so I will ask my friend who is a Visual Art
+                    Graduate and gain
+                    different feedbacks from him sometimes still. He publishes different things there as well, so if you
+                    want to take a look
+                    on those, click the button below.
+                </p>
+
+                <div class="profile-buttons">
+                    <a href="https://www.instagram.com/etpastadrawing/"
+                        class="profile-button profile-button--instagram">
+                        <img src="static/et_pfp.jpg" alt="Minecraft profile picture">
+                        <span>Ethan's Instagram Profile</span>
+                    </a>
+                </div>
+
+
+                <button type="button" class="collapsible">&#128315 Drawing with FireAlpaca</button>
+                <div class="content">
+                    <img src="static/about-dwg/fa_dwg.png" width="500" height="231">
+                </div>
+                <p></p>
+
+                <button type="button" class="collapsible">&#128315 Drawing with OneNote (WARN: Proceed at your own
+                    risk)</button>
+                <div class="content">
+                    <img src="static/about-dwg/on_dwg.png" width="500" height="231">
+                </div>
+                <p> </p>
+            </div>
+        </section>
+
+        <section id="panel-hkust" role="tabpanel" aria-labelledby="tab-hkust" hidden>
+            <p>
+                The course through out the year can be challenging yet useful. With this reason, I tried to archive as
+                many
+                courses I had studied into OneDrive as OneNote Package Archive. Here you can download every courses that
+                I had studied for your
+                reference.
+            </p>
+            <p>
+                You can click the button inside the collapsed tab to download the archive for every different courses,
+                note that
+                some archive remained unfinished and will forever be, and the copyright issues, please only view the
+                materials especially
+                the answers to each question as last resort.
+            </p>
+            <p>
+                If you see some buttons being grayed out, that implies the course is still in progress and will be updated 
+                once the materials are ready.
+            </p>
+            <p>
+                At last, I hereby to clarify I am not responsible for any damages, including your ruined grade from the
+                materials inside.
+            </p>
+
+            <button type="button" class="collapsible">&#128315 Math Courses</button>
+            <div class="content">
+                <div class="download-buttons">
+                    <a class="download-button" href="resources/MATH1012.onepkg" download>
+                        MATH1012
+                    </a>
+
+                    <a class="download-button" href="resources/MATH1014.onepkg" download>
+                        MATH1014
+                    </a>
+
+                    <a class="download-button" href="resources/MATH2011.onepkg" download>
+                        MATH2011
+                    </a>
+                </div>
+                <div class="download-buttons">
+                    <a class="download-button" href="resources/MATH2111.onepkg" download>
+                        MATH2111
+                    </a>
+
+                    <a class="download-button" href="resources/MATH2351.onepkg" download>
+                        MATH2351
+                    </a>
+                </div>
+            </div>
+            <p></p>
+
+            <button type="button" class="collapsible">&#128315 Physics Course</button>
+            <div class="content">
+                <div class="download-buttons">
+                    <a class="download-button" href="resources/PHYS1101.onepkg" download>
+                        PHYS1101
+                    </a>
+
+                    <a class="download-button" href="resources/PHYS1112.onepkg" download>
+                        PHYS1112
+                    </a>
+
+                    <a class="download-button" href="resources/PHYS1114.onepkg" download>
+                        PHYS1114
+                    </a>
+                </div>
+            </div>
+            <p> </p>
+
+            <button type="button" class="collapsible">&#128315 ELEC Courses</button>
+            <div class="content">
+                <div class="download-buttons">
+                    <a class="download-button" href="resources/ELEC1100.onepkg" download>
+                        ELEC1100
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC1200.onepkg" download>
+                        ELEC1200
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC2100.onepkg" download>
+                        ELEC2100
+                    </a>
+                </div>
+                <div class="download-buttons">
+                    <a class="download-button" href="resources/ELEC2350.onepkg" download>
+                        ELEC2350
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC2400.onepkg" download>
+                        ELEC2400
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC2600.onepkg" download>
+                        ELEC2600
+                    </a>
+                </div>
+                <div class="download-buttons">
+                    <a class="download-button-is-disabled" disabled>
+                        ELEC3120
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC3130.onepkg" download>
+                        ELEC3130
+                    </a>
+
+                    <a class="download-button" href="resources/ELEC3200.onepkg" download>
+                        ELEC3200
+                    </a>
+                </div>
+                <div class="download-buttons">
+                    <a class="download-button-is-disabled" disabled>
+                        ELEC3310
+                    </a>
+
+                    <a class="download-button-is-disabled" disabled>
+                        ELEC4320
+                    </a>
+
+                    <a class="download-button-is-disabled" disabled>
+                        -
+                    </a>
+                </div>
+            </div>
+            <p></p>
+
+            <button type="button" class="collapsible">&#128315 COMP Courses</button>
+                <div class="content">
+                    <div class="download-buttons">
+                        <a class="download-button" href="resources/COMP1021.zip" download>
+                            COMP1021
+                        </a>
+
+                        <a class="download-button" href="resources/COMP1029C.zip" download>
+                            COMP1029C
+                        </a>
+
+                        <a class="download-button" href="resources/COMP2011.zip" download>
+                            COMP2011
+                        </a>
+                    </div>
+                 </div>
+            <p> </p>
+
+            <button type="button" class="collapsible">&#128315 Common Core Courses</button>
+                <div class="content">
+                    <div class="download-buttons">
+                        <a class="download-button" href="resources/HUMA1221.onepkg" download>
+                            HUMA1221
+                        </a>
+
+                        <a class="download-button-is-disabled" disabled>
+                            HUMA1157
+                        </a>
+
+                        <a class="download-button-is-disabled" disabled>
+                            HUMA1010
+                        </a>
+                    </div>
+                    <div class="download-buttons">
+                        <a class="download-button" href="resources/SOSC1969.onepkg" download>
+                            SOSC1969
+                        </a>
+
+                        <a class="download-button" href="resources/PHYS1002.onepkg" download>
+                            PHYS1002
+                        </a>
+
+                        <a class="download-button-is-disabled" disabled>
+                            -
+                        </a>
+                    </div>
+                </div>
+            <p> </p>
+
+            <button type="button" class="collapsible">&#128315 Language Courses</button>
+                <div class="content">
+                    <div class="download-buttons">
+                        <a class="download-button" href="resources/LANG1402.zip" download>
+                            LANG1402
+                        </a>
+
+                        <a class="download-button" href="resources/LANG1403S.zip" download>
+                            LANG1403S
+                        </a>
+
+                        <a class="download-button" href="resources/LANG2030.zip" download>
+                            LANG2030
+                        </a>
+                    </div>
+                    <div class="download-buttons">
+                        <a class="download-button-is-disabled" disabled>
+                            -
+                        </a>
+
+                        <a class="download-button-is-disabled" disabled>
+                            -
+                        </a>
+
+                        <a class="download-button-is-disabled" disabled>
+                            -
+                        </a>
+                    </div>
+                 </div>
+            <p> </p>
+
+        </section>
+
+        <section id="panel-mcpk" role="tabpanel" aria-labelledby="tab-mcpk" hidden>
+            <section id="achievement-overview">
+                <h2>Overview</h2>
+                <p>
+                    Here stores my clip and images of me completing different jumps and maps, ranging from easy to difficult.
+                </p>
+                <p>
+                    Additionally, if you would like to join HPK Network Discord here, please click the button below.
+                </p>
+                <div class="profile-buttons">
+                    <a href="https://discord.gg/hpk-network-853396038538625024" class="profile-button profile-button--hpk-discord">
+                        <img src="static/hpk_pfp.png">
+                        <span>Click to join HPK Discord</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="achievement-nonoj" hidden>
+                <h2>Non OneJump Achievement</h2>
+                <p>
+                    Besides from the standard OneJump which only takes you 1 jump to win, there are several courses through out different 
+                    servers for us to beat.
+                </p>
+                <p>
+                    There are 2 types of map in general, segmented and rankup. Segmented map is basically level based where you can practice your strategy finding skills mostly 
+                    without risking losing much progress; whereas rankup focuses on precision and accuracy, i.e. if you fail, you lose progress or even go back to start, making the map 
+                     more challenging significantly yet adrenaline inducing.
+                </p>
+                <p>
+                    Unfortunately, I am not a "rankup guy", I play Hypixel Housing which is basically segmented map for fun mostly. That doesn't mean all the maps in Housing is easy though, 
+                    in fact, some of the maps are extremely challenging that it cost me days to finish. Here're some examples below.    
+                </p>
+                <button type="button" class="collapsible">&#128315 korokii - [v1] Ascension Parkour Completeion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/ascension/ascension_comp.png">
+                    <h2></h2>
+                    <p>Level demonstration: 269</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/non-oj/ascension/269.mp4" type="video/mp4"/>
+                    </video>
+                    <h2></h2>
+                    <p>Level demonstration: 270</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/non-oj/ascension/270.mp4" type="video/mp4"/>
+                    </video>
+                    <h2></h2>
+                    <p>Level demonstration: 271</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/non-oj/ascension/271.mp4" type="video/mp4"/>
+                    </video>
+
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 jiggletax - Ant Farm Parkour completion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/antfarm.png">
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 vuorru - Greenhouse Parkour completion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/greenhouse.png">
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 Chortler - Parkour Carapace completion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/carapace.png">
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 Chortler - Parkour Prism 2 completion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/prism2.png">
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 Sahrox - Vinteca Parkour completion</button>
+                <div class="content">
+                    <img src="static/pk-achievement/non-oj/vinteca.png">
+                </div>
+                <p></p>
+            </section>
+
+            <section id="achievement-oj" hidden>
+                <h2>OneJump Achievement</h2>
+                <p>
+                    Here you are at the OneJump Achievement, which contains jump that you can land or miss by 50 50.
+                </p>
+                <p>
+                    Difficulty 2-6 are still fairly easy, but mandatory as a stepping stone for us to proceed to OneJumps that are significantly harder than others. Here I spend mostly less than 30 minutes to nail a jump, 
+                    which shows it's still doable by any mean as long as you got patience and some assistance on different aspects.
+                </p>
+            </section>
+
+            <section id="D8" hidden>
+                <h2>Difficulty 8 OneJump Achievement</h2>
+                <p>
+                    Difficulty 8, well at least from this point I only have 45 strafe completions, don't underestimate the difficulty 
+                    here though, as it still cost me at least 1.5 hours to understand what's going on at least.
+                </p>
+                <button type="button" class="collapsible">&#128315 1bm 5-1</button>
+                <div class="content">
+                    <p>Definition of simple yet difficult, hardest part is to learn how to turn to 45 degree right 50ms after you press W+A+Space+ctrl, as well as learning the 45 bwmm input.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/1bm 5-1.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 4.75bm 4.8125b</button>
+                <div class="content">
+                    <p>More precise than the standard 7-5 huh</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/4.75bm 4.8125b.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+            </section>
+
+            <section id="D9" hidden>
+                <h2>Difficulty 9 OneJump Achievement</h2>
+                <p>
+                    Like difficulty 8, I only have 45 strafe completion inside here, but here is where the turn
+                    gets really robotic. Most of my friends went amazed yet baffled by the sheer patience and determination I've put
+                     to just perfect the technique here.
+                </p>
+                <button type="button" class="collapsible">&#128315 15bm 8-8</button>
+                <div class="content">
+                    <p>The buffed version of 19bm 8-8, practically more precised than that jump, this took XSRed 11 hours and 2 hours for me only, so I'll take that as a wim lol.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/15bm 8-8.mp4" type="video/mp4"/>
+                    </video>
+                </div>         
+                <p></p>
+                <button type="button" class="collapsible">&#128315 10.125bm + Tier 5 2bm 5b</button>
+                <div class="content">
+                    <p>This jump is actually harder than I thought, given you need muscle memory to time your space tap properly to chain the last 45 degree turn</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/10.125bm + Tier 5 2bm 5b.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 8bm 7-5 to chest</button>
+                <div class="content">
+                    <p>I still did not expect I nailed this jump that fast, probably because of the solid foundation on my strategy.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/8bm 7-5 to chest.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 11bm 3.9375+1</button>
+                <div class="content">
+                    <p>This jump is such a painful jump for me, I had too many 0.001 or even 0.0001 miss here which made me rage quit a lot! Thank god I nailed it finally.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/11bm 3.9375+1.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 18bm 3bcmm ladder to chest 5b</button>
+                <div class="content">
+                    <p>Ironically, this jump is harder than I thought originally. Also I forgot to mute my mic here so you can hear me tryharding with my keyboard lol.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/18bm 3bcmm l2c 5b.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 9bm 3bcmm 8-8</button>
+                <div class="content">
+                    <p>Well, even if I can triple 45, it's too gambling to try double 45 with macro coordinate, due to the sheer perfection on those turn and input needs to be.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/9bm 3bcmm 8-8.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+                <button type="button" class="collapsible">&#128315 19bm 8-8</button>
+                <div class="content">
+                    <p>19bm 8-8 as my first difficulty 9 jump is one of my greatest achievement here, given that this is a forced triple 45 strafe compared to some others.</p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/19bm 8-8_hyp.mp4" type="video/mp4"/>
+                    </video>
+                </div>
+                <p></p>
+            </section>
+
+            <section id="D10" hidden>
+                <h2>Difficulty 10 OneJump Achievement</h2>
+                <p>
+                    The D10, in addition to difficulty 9, here also involve some luck to just nail the jump. The jump inside here often
+                    are extremely precised that I spent at least 10 hours or much more to build from bottom. However, the reward is really incredible here, 
+                    given you know you've spend long enough to finally make such miracle happen.
+                </p>
+                <button type="button" class="collapsible">&#128315 17bm 3bc ice+slowness 2 4.8125b</button>
+                <div class="content">
+                    <p>The infamous ice quad 45, this is essentially my peak jump in OneJump in here given I had spent at least 3 years learning from scratch. </p>
+                    <p>I still don't know how those not so great input landed me this jump by 2 micrometers, but that works I guess? </p>
+                    <video height="480" width="854" controls preload="none">
+                        <source data-src="static/pk-achievement/oj/17bm 3bc ice+slowness 2 4.8125b land.mp4" type="video/mp4"/>
+                    </video>
+                    <p></p>
+                    <button type="button" class="collapsible">&#128315 Additional miss for this jump</button>
+                    <div class="content">
+                        <video height="480" width="854" controls preload="none">
+                            <source data-src="static/pk-achievement/oj/17bm 3bc ice+slowness 2 4.8125b e-4 miss.mp4" type="video/mp4"/>
+                        </video>
+                    </div>
+                    <p></p>
+                </div>
+                <p></p>
+            </section>
+        </section>
+
+        <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+            <h2>Contact me</h2>
+            <p>Send me a message using the form below.</p>
+            <form class="contact-form" action="https://formspree.io/f/maenkdkq" method="POST">
+                <label for="contact-name">Name</label>
+                <input id="contact-name" name="name" type="text" autocomplete="name" required>
+
+                <label for="contact-email">Email</label>
+                <input id="contact-email" name="email" type="email" autocomplete="email" required>
+
+                <label for="contact-subject">Subject</label>
+                <input id="contact-subject" name="_subject" type="text" required>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" required></textarea>
+
+                <input name="_gotcha" type="text" tabindex="-1" autocomplete="off" hidden>
+                <button type="submit">Send message</button>
+                <p class="form-status" aria-live="polite"></p>
+            </form>
+        </section>
+
     </main>
-  </body>
+
+    <script>
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const dropdownButtons = document.querySelectorAll("[data-achievement-section]");
+
+        function activateTab(tab) {
+            tabs.forEach((currentTab) => {
+                const isSelected = currentTab === tab;
+
+                currentTab.setAttribute("aria-selected", isSelected);
+                currentTab.tabIndex = isSelected ? 0 : -1;
+
+                const panelId = currentTab.getAttribute("aria-controls");
+                document.getElementById(panelId).hidden = !isSelected;
+            });
+
+            tab.focus();
+        }
+
+        function loadDeferredMedia(content) {
+            content.querySelectorAll("video").forEach((video) => {
+                if (video.closest(".content") !== content) {
+                    return;
+                }
+
+                const source = video.querySelector("source[data-src]");
+                if (!source) {
+                    return;
+                }
+
+                source.src = source.dataset.src;
+                source.removeAttribute("data-src");
+                video.load();
+            });
+
+            content.querySelectorAll("iframe[data-src]").forEach((iframe) => {
+                if (iframe.closest(".content") === content) {
+                    iframe.src = iframe.dataset.src;
+                    iframe.removeAttribute("data-src");
+                }
+            });
+        }
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                    loadDeferredMedia(content);
+                }
+            });
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener("click", () => {
+                activateTab(tab);
+            });
+
+            tab.addEventListener("keydown", (event) => {
+                let nextIndex = index;
+
+                if (event.key === "ArrowRight") {
+                    nextIndex = (index + 1) % tabs.length;
+                } else if (event.key === "ArrowLeft") {
+                    nextIndex = (index - 1 + tabs.length) % tabs.length;
+                } else if (event.key === "Home") {
+                    nextIndex = 0;
+                } else if (event.key === "End") {
+                    nextIndex = tabs.length - 1;
+                } else {
+                    return;
+                }
+
+                event.preventDefault();
+                activateTab(tabs[nextIndex]);
+            });
+        });
+
+        dropdownButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const mcpkTab = document.getElementById("tab-mcpk");
+
+                activateTab(mcpkTab);
+                [
+                    "achievement-overview",
+                    "achievement-nonoj",
+                    "D8",
+                    "D9",
+                    "D10"
+                ]
+                    .forEach((sectionId) => {
+                        document.getElementById(sectionId).hidden = sectionId !== button.dataset.achievementSection;
+                    });
+
+                dropdownButtons.forEach((currentButton) => {
+                    currentButton.setAttribute(
+                        "aria-current",
+                        currentButton === button ? "page" : "false"
+                    );
+                });
+            });
+        });
+
+        const contactForm = document.querySelector(".contact-form");
+        const formStatus = contactForm.querySelector(".form-status");
+        const submitButton = contactForm.querySelector("button[type='submit']");
+
+        contactForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            formStatus.textContent = "Sending...";
+            formStatus.className = "form-status";
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: "POST",
+                    body: new FormData(contactForm),
+                    headers: {
+                        Accept: "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("The form submission failed.");
+                }
+
+                contactForm.reset();
+                formStatus.textContent = "Your message was sent successfully.";
+                formStatus.className = "form-status form-status--success";
+            } catch (error) {
+                formStatus.textContent = "Unable to send your message. Please try again later.";
+                formStatus.className = "form-status form-status--error";
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+
 </html>
